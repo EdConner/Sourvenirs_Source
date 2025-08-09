@@ -161,17 +161,33 @@
                             <option value="all">همه دسته‌ها</option>
                         </select>
                     </div>
+                    <!-- Price Range Filter (Min/Max) -->
                     <div>
-                        <label for="price-filter" class="block text-sm font-medium text-gray-700 mb-1">حداکثر قیمت (دلار)</label>
-                        <input type="range" id="price-filter" min="0" max="500" value="500" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
-                        <span id="price-value" class="block text-center text-gray-600 mt-1">500$</span>
+                        <label for="min-price-filter" class="block text-sm font-medium text-gray-700 mb-1">حداقل قیمت (دلار)</label>
+                        <input type="number" id="min-price-filter" min="0" value="0" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-[#4F80B9] focus:border-[#4F80B9]">
                     </div>
+                    <div>
+                        <label for="max-price-filter" class="block text-sm font-medium text-gray-700 mb-1">حداکثر قیمت (دلار)</label>
+                        <input type="number" id="max-price-filter" min="0" value="500" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-[#4F80B9] focus:border-[#4F80B9]">
+                        <span id="price-value" class="block text-center text-gray-600 mt-1">0$-500$</span>
+                    </div>
+                    <!-- End Price Range Filter -->
                     <div>
                         <label for="audience-filter" class="block text-sm font-medium text-gray-700 mb-1">مخاطب</label>
                         <select id="audience-filter" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-[#4F80B9] focus:border-[#4F80B9]">
                             <option value="all">همه</option>
                         </select>
                     </div>
+                    <!-- Sort by Price -->
+                    <div>
+                        <label for="sort-by-price" class="block text-sm font-medium text-gray-700 mb-1">مرتب سازی بر اساس قیمت</label>
+                        <select id="sort-by-price" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-[#4F80B9] focus:border-[#4F80B9]">
+                            <option value="none">بدون مرتب سازی</option>
+                            <option value="asc">قیمت: کم به زیاد</option>
+                            <option value="desc">قیمت: زیاد به کم</option>
+                        </select>
+                    </div>
+                    <!-- End Sort by Price -->
                 </div>
                 <div class="flex justify-center gap-4 mt-6">
                     <button id="show-ranking-btn" class="bg-[#4F80B9] text-white px-6 py-2 rounded-md hover:bg-[#34658F] transition-colors">نمایش رتبه‌بندی</button>
@@ -281,7 +297,7 @@
              <div class="bg-white p-6 rounded-lg shadow">
                 <h2 class="text-2xl font-semibold text-[#34658F] mb-4 text-center">فروشگاه‌های مطرح سوغات</h2>
                 <p class="text-center text-gray-600 mb-6 max-w-3xl mx-auto">در این بخش، فهرستی از فروشگاه‌های معتبر فیزیکی و آنلاین که به صورت تخصصی در زمینه فروش سوغات و صنایع دستی فعالیت می‌کنند، ارائه شده است. می‌توانید برای یافتن فروشگاه مورد نظر، در کادر زیر جستجو کنید.</p>
-                <div class="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
                         <label for="store-search" class="block text-sm font-medium text-gray-700 mb-1">جستجوی فروشگاه</label>
                         <input type="text" id="store-search" placeholder="جستجوی فروشگاه بر اساس نام یا کشور..." class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-[#4F80B9] focus:border-[#4F80B9]">
@@ -294,6 +310,14 @@
                             <option value="retail">فروشگاه‌های خرده‌فروشی</option>
                         </select>
                     </div>
+                    <!-- New: Store Country Filter -->
+                    <div>
+                        <label for="store-country-filter" class="block text-sm font-medium text-gray-700 mb-1">کشور</label>
+                        <select id="store-country-filter" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-[#4F80B9] focus:border-[#4F80B9]">
+                            <option value="all">همه کشورها</option>
+                        </select>
+                    </div>
+                    <!-- End New: Store Country Filter -->
                 </div>
                 <div id="store-list" class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 </div>
@@ -304,6 +328,34 @@
             <div class="bg-white p-6 rounded-lg shadow mb-6">
                 <h2 class="text-2xl font-semibold text-[#34658F] mb-4 text-center">بررسی کشورها</h2>
                 <p class="text-center text-gray-600 mb-6 max-w-3xl mx-auto">این بخش به بررسی جزئیات مربوط به گردشگری و بازار سوغات در کشورهای مختلف می‌پردازد. می‌توانید اطلاعات مربوط به تعداد گردشگران، سبد خرید متوسط و محصولات محبوب هر کشور را مشاهده کنید.</p>
+                <!-- New: Country Filters -->
+                <div class="mb-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div>
+                        <label for="tourist-count-filter-min" class="block text-sm font-medium text-gray-700 mb-1">حداقل تعداد گردشگر (میلیون)</label>
+                        <input type="number" id="tourist-count-filter-min" min="0" value="0" class="w-full p-2 border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div>
+                        <label for="tourist-count-filter-max" class="block text-sm font-medium text-gray-700 mb-1">حداکثر تعداد گردشگر (میلیون)</label>
+                        <input type="number" id="tourist-count-filter-max" min="0" value="100" class="w-full p-2 border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div>
+                        <label for="avg-spending-filter-min" class="block text-sm font-medium text-gray-700 mb-1">حداقل متوسط سبد خرید (دلار)</label>
+                        <input type="number" id="avg-spending-filter-min" min="0" value="0" class="w-full p-2 border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div>
+                        <label for="avg-spending-filter-max" class="block text-sm font-medium text-gray-700 mb-1">حداکثر متوسط سبد خرید (دلار)</label>
+                        <input type="number" id="avg-spending-filter-max" min="0" value="500" class="w-full p-2 border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div>
+                        <label for="annual-revenue-filter-min" class="block text-sm font-medium text-gray-700 mb-1">حداقل درآمد سالانه (میلیارد دلار)</label>
+                        <input type="number" id="annual-revenue-filter-min" min="0" value="0" class="w-full p-2 border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                    <div>
+                        <label for="annual-revenue-filter-max" class="block text-sm font-medium text-gray-700 mb-1">حداکثر درآمد سالانه (میلیارد دلار)</label>
+                        <input type="number" id="annual-revenue-filter-max" min="0" value="100" class="w-full p-2 border border-gray-300 rounded-md shadow-sm">
+                    </div>
+                </div>
+                <!-- End New: Country Filters -->
                 <div class="flex justify-center gap-4 mt-6 mb-6">
                     <button id="show-analysis-btn" class="bg-[#4F80B9] text-white px-6 py-2 rounded-md hover:bg-[#34658F] transition-colors">نمایش تحلیل هزینه‌ها</button>
                 </div>
@@ -332,6 +384,34 @@
                     <p><strong>سطح اقتصادی:</strong> <span id="global-economic-levels"></span></p>
                     <p><strong>ترکیب جمعیتی:</strong> <span id="global-demographics"></span></p>
                 </div>
+                <!-- New: Tourist Analysis Filters -->
+                <div class="mb-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div>
+                        <label for="travel-purpose-filter" class="block text-sm font-medium text-gray-700 mb-1">هدف سفر</label>
+                        <select id="travel-purpose-filter" class="w-full p-2 border border-gray-300 rounded-md shadow-sm">
+                            <option value="all">همه</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="age-group-filter" class="block text-sm font-medium text-gray-700 mb-1">سن گردشگران</label>
+                        <select id="age-group-filter" class="w-full p-2 border border-gray-300 rounded-md shadow-sm">
+                            <option value="all">همه</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="economic-level-filter" class="block text-sm font-medium text-gray-700 mb-1">سطح اقتصادی</label>
+                        <select id="economic-level-filter" class="w-full p-2 border border-gray-300 rounded-md shadow-sm">
+                            <option value="all">همه</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="demographic-filter" class="block text-sm font-medium text-gray-700 mb-1">ترکیب جمعیتی</label>
+                        <select id="demographic-filter" class="w-full p-2 border border-gray-300 rounded-md shadow-sm">
+                            <option value="all">همه</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- End New: Tourist Analysis Filters -->
                 <div id="tourist-analysis-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     <!-- Tourist analysis country cards will be rendered here -->
                 </div>
@@ -434,16 +514,249 @@
                 economicValue: 7,
                 // Updated to imageUrls array
                 imageUrls: [
-                    "Souvenir's%20Images/matryoshka-1.jpg",
-                    "Souvenir's%20Images/matryoshka-2.jpg",
-                    "Souvenir's%20Images/matryoshka-3.jpg"
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Matryoshka+1",
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Matryoshka+2",
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Matryoshka+3"
                 ],
                 annualProductionUnits: 1200000,
                 annualSalesRevenueUSD: "یافت نشده",
                 annualProductionUnitsSecondCountry: 15000000, // New field
                 annualSalesRevenueUSDSecondCountry: 45000000 // New field
             },
-            // You can add more product objects here by copying and pasting the structure above.
+            {
+                id: 2,
+                name: "فرش ایرانی",
+                englishName: "Persian Carpet",
+                country: "ایران",
+                minPriceUSD: 200,
+                maxPriceUSD: 50000,
+                origin: "تبریز",
+                story: "فرش ایرانی، شاهکاری از هنر و صنعت، با قدمتی چند هزار ساله، هر گره آن داستانی از فرهنگ، تاریخ و اعتقادات مردم ایران را بازگو می‌کند. طرح‌ها و رنگ‌های آن الهام گرفته از طبیعت، شعر و اساطیر است.",
+                description: "دستبافته‌ای نفیس از پشم یا ابریشم با طرح‌های پیچیده و رنگ‌های طبیعی. نمادی از هنر و فرهنگ غنی ایران.",
+                avgPriceUSD: 1500,
+                localPrice: "75,000,000 IRR",
+                category: ["دکوری", "صنایع دستی", "هنری"],
+                audience: ["کلکسیونرها", "علاقه‌مندان به فرهنگ", "گردشگران لوکس"],
+                materials: "پشم، ابریشم، رنگ‌های طبیعی",
+                usage: "تزئین منزل، سرمایه‌گذاری، هدیه لوکس",
+                culturalValue: 10,
+                economicValue: 9,
+                imageUrls: [
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Persian+Carpet+1",
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Persian+Carpet+2",
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Persian+Carpet+3"
+                ],
+                annualProductionUnits: 50000,
+                annualSalesRevenueUSD: 75000000
+            },
+            {
+                id: 3,
+                name: "کیمونو",
+                englishName: "Kimono",
+                country: "ژاپن",
+                minPriceUSD: 50,
+                maxPriceUSD: 5000,
+                origin: "کیوتو",
+                story: "کیمونو، لباس سنتی ژاپن، بیش از هزار سال قدمت دارد و نمادی از زیبایی، ظرافت و احترام است. هر کیمونو با طرح‌ها و رنگ‌های خاص خود، فصلی، رویدادی یا حتی وضعیت اجتماعی فرد را نشان می‌دهد.",
+                description: "لباس سنتی ژاپنی با طرح‌های متنوع و پارچه‌های ابریشمی یا نخی. برای مراسم خاص و به عنوان سوغات فرهنگی محبوب است.",
+                avgPriceUSD: 300,
+                localPrice: "40,000 JPY",
+                category: ["پوشاک", "فرهنگی"],
+                audience: ["علاقه‌مندان به فرهنگ", "گردشگران", "کلکسیونرها"],
+                materials: "ابریشم، کتان، پلی‌استر",
+                usage: "پوشاک رسمی، تزئین، هدیه",
+                culturalValue: 9,
+                economicValue: 8,
+                imageUrls: [
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Kimono+1",
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Kimono+2",
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Kimono+3"
+                ],
+                annualProductionUnits: 200000,
+                annualSalesRevenueUSD: 60000000
+            },
+            {
+                id: 4,
+                name: "ماکت برج ایفل",
+                englishName: "Eiffel Tower Model",
+                country: "فرانسه",
+                minPriceUSD: 5,
+                maxPriceUSD: 100,
+                origin: "پاریس",
+                story: "برج ایفل، نماد پاریس و فرانسه، از زمان ساختش در سال ۱۸۸۹، الهام‌بخش هنرمندان و عاشقان بوده است. ماکت‌های آن، یادگاری کوچک از این شاهکار معماری هستند که خاطرات سفر به پاریس را زنده نگه می‌دارند.",
+                description: "ماکت‌های فلزی یا پلاستیکی در اندازه‌های مختلف از برج ایفل. سوغاتی رایج و محبوب برای گردشگران.",
+                avgPriceUSD: 20,
+                localPrice: "18 EUR",
+                category: ["دکوری", "یادگاری"],
+                audience: ["گردشگران", "عموم مردم"],
+                materials: "فلز، پلاستیک",
+                usage: "تزئین منزل، هدیه",
+                culturalValue: 7,
+                economicValue: 6,
+                imageUrls: [
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Eiffel+Tower+Model+1",
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Eiffel+Tower+Model+2",
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Eiffel+Tower+Model+3"
+                ],
+                annualProductionUnits: 5000000,
+                annualSalesRevenueUSD: 100000000
+            },
+            {
+                id: 5,
+                name: "سفال لالجین",
+                englishName: "Lalejin Pottery",
+                country: "ایران",
+                origin: "لالجین، همدان",
+                minPriceUSD: 10,
+                maxPriceUSD: 300,
+                story: "لالجین، پایتخت سفال ایران، با قدمتی بیش از ۷۰۰ سال در این هنر، میراث‌دار دانش و مهارت نسل‌هاست. هر قطعه سفال لالجین، با دستان هنرمند صنعتگران این منطقه شکل گرفته و داستان خاک و آتش را روایت می‌کند.",
+                description: "ظروف سفالی دست‌ساز با طرح‌ها و لعاب‌های سنتی. معروف به کیفیت و زیبایی در منطقه لالجین همدان.",
+                avgPriceUSD: 40,
+                localPrice: "2,000,000 IRR",
+                category: ["صنایع دستی", "دکوری", "کاربردی"],
+                audience: ["علاقه‌مندان به صنایع دستی", "گردشگران", "خانه‌داران"],
+                materials: "خاک رس، لعاب",
+                usage: "ظروف غذاخوری، تزئین، گلدان",
+                culturalValue: 9,
+                economicValue: 8,
+                imageUrls: [
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Lalejin+Pottery+1",
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Lalejin+Pottery+2",
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Lalejin+Pottery+3"
+                ],
+                annualProductionUnits: 800000,
+                annualSalesRevenueUSD: 32000000
+            },
+            {
+                id: 6,
+                name: "چاقوی سوئیسی",
+                englishName: "Swiss Army Knife",
+                country: "سوئیس",
+                minPriceUSD: 25,
+                maxPriceUSD: 200,
+                origin: "ایباخ",
+                story: "چاقوی ارتش سوئیس، نمادی از دقت و کارایی سوئیسی، در اواخر قرن ۱۹ برای سربازان طراحی شد. این ابزار چندکاره، با کیفیت و دوام بی‌نظیر، به یک همراه قابل اعتماد برای ماجراجویان و افراد روزمره تبدیل شده است.",
+                description: "ابزار چندکاره شامل چاقو، قیچی، پیچ‌گوشتی و... معروف به کیفیت و دوام بالا.",
+                avgPriceUSD: 60,
+                localPrice: "55 CHF",
+                category: ["ابزار", "یادگاری"],
+                audience: ["ماجراجویان", "گردشگران", "افراد فنی"],
+                materials: "استیل ضد زنگ، پلاستیک",
+                usage: "کاربردهای روزمره، کمپینگ، هدیه",
+                culturalValue: 6,
+                economicValue: 7,
+                imageUrls: [
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Swiss+Army+Knife+1",
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Swiss+Army+Knife+2",
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Swiss+Army+Knife+3"
+                ],
+                annualProductionUnits: 4000000,
+                annualSalesRevenueUSD: 240000000
+            },
+            {
+                id: 7,
+                name: "فانوس مراکشی",
+                englishName: "Moroccan Lantern",
+                country: "مراکش",
+                minPriceUSD: 30,
+                maxPriceUSD: 400,
+                origin: "فاس",
+                story: "فانوس‌های مراکشی، با نورهای گرم و الگوهای پیچیده‌شان، فضایی جادویی و عرفانی خلق می‌کنند. این فانوس‌ها که ریشه در معماری اسلامی و فرهنگ مراکش دارند، نمادی از مهمان‌نوازی و زیبایی شرق هستند.",
+                description: "فانوس‌های فلزی دست‌ساز با شیشه‌های رنگی و طرح‌های هندسی. برای تزئین و ایجاد فضای خاص.",
+                avgPriceUSD: 80,
+                localPrice: "800 MAD",
+                category: ["دکوری", "صنایع دستی"],
+                audience: ["علاقه‌مندان به دکوراسیون", "گردشگران", "کلکسیونرها"],
+                materials: "فلز (برنج، مس، آهن), شیشه رنگی",
+                usage: "تزئین منزل، باغ، کافه",
+                culturalValue: 8,
+                economicValue: 7,
+                imageUrls: [
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Moroccan+Lantern+1",
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Moroccan+Lantern+2",
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Moroccan+Lantern+3"
+                ],
+                annualProductionUnits: 300000,
+                annualSalesRevenueUSD: 24000000
+            },
+            {
+                id: 8,
+                name: "ماسک آفریقایی",
+                englishName: "African Mask",
+                country: "غنا",
+                minPriceUSD: 40,
+                maxPriceUSD: 1000,
+                origin: "آشانتی",
+                story: "ماسک‌های آفریقایی، فراتر از یک شیء هنری، نمادی از روح و هویت قبایل آفریقایی هستند. هر ماسک داستانی از اجداد، ارواح طبیعت یا مراسم آیینی را روایت می‌کند و در رقص‌ها و جشن‌ها به کار می‌رود.",
+                description: "ماسک‌های چوبی یا فلزی حکاکی شده با طرح‌های سنتی و نمادین. بخشی از فرهنگ و مراسم قبایل آفریقایی.",
+                avgPriceUSD: 150,
+                localPrice: "1800 GHS",
+                category: ["هنری", "فرهنگی", "دکوری"],
+                audience: ["کلکسیونرها", "علاقه‌مندان به فرهنگ آفریقا", "موزه‌ها"],
+                materials: "چوب، فلز، صدف، مهره",
+                usage: "تزئین، مراسم آیینی، کلکسیون",
+                culturalValue: 9,
+                economicValue: 7,
+                imageUrls: [
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=African+Mask+1",
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=African+Mask+2",
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=African+Mask+3"
+                ],
+                annualProductionUnits: 100000,
+                annualSalesRevenueUSD: 15000000
+            },
+            {
+                id: 9,
+                name: "کفش چوبی هلندی (کلوپن)",
+                englishName: "Dutch Wooden Shoes (Klompen)",
+                country: "هلند",
+                minPriceUSD: 20,
+                maxPriceUSD: 80,
+                origin: "آمستردام",
+                story: "کلوپن، کفش‌های چوبی سنتی هلند، از قرن ۱۳ میلادی توسط کشاورزان و کارگران برای محافظت از پاها در برابر رطوبت و سرما استفاده می‌شدند. امروزه، این کفش‌ها نمادی از فرهنگ هلند و سوغاتی محبوب هستند.",
+                description: "کفش‌های چوبی حکاکی شده و رنگ‌آمیزی شده. نمادی از فرهنگ هلند.",
+                avgPriceUSD: 45,
+                localPrice: "40 EUR",
+                category: ["پوشاک", "فرهنگی", "یادگاری"],
+                audience: ["گردشگران", "علاقه‌مندان به فرهنگ"],
+                materials: "چوب بید یا صنوبر",
+                usage: "تزئین، پوشاک سنتی، هدیه",
+                culturalValue: 7,
+                economicValue: 6,
+                imageUrls: [
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Klompen+1",
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Klompen+2",
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Klompen+3"
+                ],
+                annualProductionUnits: 600000,
+                annualSalesRevenueUSD: 27000000
+            },
+            {
+                id: 10,
+                name: "چای‌خوری روسی (سماور)",
+                englishName: "Russian Samovar",
+                country: "روسیه",
+                minPriceUSD: 50,
+                maxPriceUSD: 1000,
+                origin: "تولا",
+                story: "سماور، قلب خانه روسی، بیش از ۲۰۰ سال است که نمادی از مهمان‌نوازی و دورهمی‌های گرم خانوادگی است. صدای جوشیدن آب در سماور، نویدبخش لحظاتی آرام و دلنشین با چای است.",
+                description: "ظرف فلزی برای جوشاندن آب و دم کردن چای، نمادی از فرهنگ چای‌خوری روسی.",
+                avgPriceUSD: 250,
+                localPrice: "18,000 RUB",
+                category: ["لوازم خانگی", "فرهنگی", "دکوری"],
+                audience: ["علاقه‌مندان به فرهنگ", "کلکسیونرها", "خانه‌داران"],
+                materials: "مس، برنج، استیل ضد زنگ",
+                usage: "تهیه چای، دکوراسیون",
+                culturalValue: 8,
+                economicValue: 7,
+                imageUrls: [
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Samovar+1",
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Samovar+2",
+                    "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Samovar+3"
+                ],
+                annualProductionUnits: 150000,
+                annualSalesRevenueUSD: 37500000
+            }
         ].map(p => ({
             ...p,
             // New characteristics
@@ -476,6 +789,43 @@
                     "https://placehold.co/400x300/A0D2DB/FFFFFF?text=Store1+B"
                 ]
             },
+            {
+                id: 2,
+                name: "Global Crafts Market",
+                country: "آلمان",
+                website: "https://www.globalcrafts.de",
+                salesVolume: "800000.00",
+                areaSqM: "150",
+                length: 15,
+                width: 10,
+                productsSold: ["صنایع دستی آفریقایی", "جواهرات آسیایی", "سفال اروپایی"],
+                location: "برلین",
+                type: "retail",
+                storeAge: "10 سال",
+                specialNotes: "فروشگاه تخصصی صنایع دستی از سراسر جهان با تمرکز بر تجارت عادلانه.",
+                imageUrls: [
+                    "https://placehold.co/400x300/D2A0DB/FFFFFF?text=Store2+A",
+                    "https://placehold.co/400x300/D2A0DB/FFFFFF?text=Store2+B"
+                ]
+            },
+            {
+                id: 3,
+                name: "Souvenir World",
+                country: "فرانسه",
+                website: "https://www.souvenirworld.fr",
+                salesVolume: "1200000.00",
+                areaSqM: "250",
+                length: 25,
+                width: 10,
+                productsSold: ["ماکت‌های ایفل", "کلاه برت", "سوغات پاریس"],
+                location: "پاریس",
+                type: "chain",
+                specialNotes: "بزرگترین فروشگاه زنجیره‌ای سوغات در فرانسه با چندین شعبه در شهرهای توریستی.",
+                imageUrls: [
+                    "https://placehold.co/400x300/DBA0A0/FFFFFF?text=Store3+A",
+                    "https://placehold.co/400x300/DBA0A0/FFFFFF?text=Store3+B"
+                ]
+            }
         ];
 
 
@@ -484,17 +834,48 @@
             {
                 name: "فرانسه",
                 tourists: "89 میلیون نفر",
+                touristsNumeric: 89, // Added numeric field for filtering
                 avgSpending: 120, 
                 souvenirSpendingPercentage: 15, 
                 transportationCost: 40, 
                 accommodationCost: 50, 
                 foodCost: 30,
                 annualTourismRevenue: "60 میلیارد دلار", // Added annual tourism revenue
+                annualTourismRevenueNumeric: 60, // Added numeric field for filtering
                 perCapitaIncome: "45,000 دلار", // Added per capita income
                 popularProducts: ["ماکت برج ایفل", "کلاه برت", "عطر"],
                 notes: "پاریس به عنوان پایتخت مد و هنر، مقصدی محبوب برای خرید سوغات لوکس است."
             },
-            // You can add more country objects here by copying and pasting the structure above.
+            {
+                name: "ایران",
+                tourists: "7 میلیون نفر",
+                touristsNumeric: 7,
+                avgSpending: 80,
+                souvenirSpendingPercentage: 25,
+                transportationCost: 20,
+                accommodationCost: 30,
+                foodCost: 20,
+                annualTourismRevenue: "5 میلیارد دلار",
+                annualTourismRevenueNumeric: 5,
+                perCapitaIncome: "5,000 دلار",
+                popularProducts: ["فرش ایرانی", "سفال لالجین", "میناکاری"],
+                notes: "ایران با تاریخ و فرهنگ غنی، مقصدی برای گردشگری فرهنگی و تاریخی است."
+            },
+            {
+                name: "ژاپن",
+                tourists: "32 میلیون نفر",
+                touristsNumeric: 32,
+                avgSpending: 200,
+                souvenirSpendingPercentage: 10,
+                transportationCost: 60,
+                accommodationCost: 80,
+                foodCost: 40,
+                annualTourismRevenue: "40 میلیارد دلار",
+                annualTourismRevenueNumeric: 40,
+                perCapitaIncome: "40,000 دلار",
+                popularProducts: ["کیمونو", "عروسک کوکشی", "چای‌خوری ژاپنی"],
+                notes: "ژاپن ترکیبی از سنت و مدرنیته را ارائه می‌دهد که برای گردشگران جذاب است."
+            }
         ];
 
         // --- Tourist Analysis Data ---
@@ -507,9 +888,28 @@
                 ageGroups: { '18-25': 20, '26-40': 45, '41-60': 25, '60+': 10 },
                 economicLevels: { high: 30, medium: 50, low: 20 },
                 demographics: { retired: 10, couples: 40, solo: 20, youth: 15, family: 15 },
-                image: "Flags/France.gif"
+                image: "https://placehold.co/400x300/A0D2DB/FFFFFF?text=France+Flag"
             },
-            // You can add more country tourist analysis objects here by copying and pasting the structure above.
+            {
+                id: 2,
+                country: "ایران",
+                topDestinations: ["اصفهان", "شیراز", "تهران"],
+                travelPurposes: { business: 10, education: 15, leisure: 50, family: 25 },
+                ageGroups: { '18-25': 30, '26-40': 40, '41-60': 20, '60+': 10 },
+                economicLevels: { high: 15, medium: 60, low: 25 },
+                demographics: { retired: 5, couples: 30, solo: 25, youth: 20, family: 20 },
+                image: "https://placehold.co/400x300/D2A0DB/FFFFFF?text=Iran+Flag"
+            },
+            {
+                id: 3,
+                country: "ژاپن",
+                topDestinations: ["توکیو", "کیوتو", "اوساکا"],
+                travelPurposes: { business: 30, education: 10, leisure: 55, family: 5 },
+                ageGroups: { '18-25': 25, '26-40': 50, '41-60': 20, '60+': 5 },
+                economicLevels: { high: 40, medium: 45, low: 15 },
+                demographics: { retired: 8, couples: 45, solo: 25, youth: 12, family: 10 },
+                image: "https://placehold.co/400x300/DBA0A0/FFFFFF?text=Japan+Flag"
+            }
         ];
 
         // Global Tourist Statistics Calculation
@@ -565,9 +965,13 @@
         document.addEventListener('DOMContentLoaded', () => {
             const countryFilter = document.getElementById('country-filter');
             const categoryFilter = document.getElementById('category-filter');
-            const priceFilter = document.getElementById('price-filter');
+            // Price Range Filter elements
+            const minPriceFilter = document.getElementById('min-price-filter');
+            const maxPriceFilter = document.getElementById('max-price-filter');
             const priceValue = document.getElementById('price-value');
+            // End Price Range Filter elements
             const audienceFilter = document.getElementById('audience-filter');
+            const sortByPrice = document.getElementById('sort-by-price'); // New sort element
             const productGrid = document.getElementById('product-grid');
             const productModal = document.getElementById('product-modal');
             const productModalContent = document.getElementById('modal-content');
@@ -576,6 +980,7 @@
             const storeList = document.getElementById('store-list');
             const storeSearch = document.getElementById('store-search');
             const storeTypeFilter = document.getElementById('store-type-filter'); // New filter for store type
+            const storeCountryFilter = document.getElementById('store-country-filter'); // New filter for store country
             const storeDetailModal = document.getElementById('store-detail-modal');
             const storeModalContent = document.getElementById('store-modal-content');
             const closeStoreModalBtn = document.getElementById('close-store-modal');
@@ -690,6 +1095,15 @@
                 }
             });
 
+            // Populate store country filter
+            let allStoreCountries = ['all'];
+            storesData.forEach(store => {
+                if (!allStoreCountries.includes(store.country)) {
+                    allStoreCountries.push(store.country);
+                }
+            });
+            storeCountryFilter.innerHTML = allStoreCountries.map(c => `<option value="${c}">${c === 'all' ? 'همه کشورها' : c}</option>`).join('');
+
 
             allCountries.sort((a,b) => a === 'همه کشورها' ? -1 : b === 'همه کشورها' ? 1 : a.localeCompare(b,'fa'));
             allCategories.sort((a,b) => a === 'همه دسته‌ها' ? -1 : b === 'همه دسته‌ها' ? 1 : a.localeCompare(b,'fa'));
@@ -735,26 +1149,43 @@
             function filterAndRender() {
                 const country = countryFilter.value;
                 const category = categoryFilter.value;
-                const price = parseInt(priceFilter.value);
+                const minPrice = parseInt(minPriceFilter.value); // Get min price
+                const maxPrice = parseInt(maxPriceFilter.value); // Get max price
                 const audience = audienceFilter.value;
+                const sortOrder = sortByPrice.value; // Get sort order
 
-                const filtered = products.filter(p => {
+                let filtered = products.filter(p => {
                     const countryMatch = (country === 'همه کشورها' || p.country === country || p.secondCountry === country); // Check second country too
                     const categoryMatch = (category === 'همه دسته‌ها' || p.category.includes(category));
-                    const priceMatch = (p.avgPriceUSD <= price);
+                    const priceMatch = (p.avgPriceUSD >= minPrice && p.avgPriceUSD <= maxPrice); // Use min and max
                     const audienceMatch = (audience === 'همه' || p.audience.includes(audience));
                     return countryMatch && categoryMatch && priceMatch && audienceMatch;
                 });
+
+                // Apply sorting
+                if (sortOrder === 'asc') {
+                    filtered.sort((a, b) => a.avgPriceUSD - b.avgPriceUSD);
+                } else if (sortOrder === 'desc') {
+                    filtered.sort((a, b) => b.avgPriceUSD - a.avgPriceUSD);
+                }
+
                 renderProducts(filtered);
             }
             
-            priceFilter.addEventListener('input', (e) => {
-                priceValue.textContent = `${e.target.value}$`;
+            // Update price display and re-filter on input change
+            minPriceFilter.addEventListener('input', () => {
+                priceValue.textContent = `${minPriceFilter.value}$-${maxPriceFilter.value}$`;
+                filterAndRender();
             });
-            priceFilter.addEventListener('change', filterAndRender);
+            maxPriceFilter.addEventListener('input', () => {
+                priceValue.textContent = `${minPriceFilter.value}$-${maxPriceFilter.value}$`;
+                filterAndRender();
+            });
+
             countryFilter.addEventListener('change', filterAndRender);
             categoryFilter.addEventListener('change', filterAndRender);
             audienceFilter.addEventListener('change', filterAndRender);
+            sortByPrice.addEventListener('change', filterAndRender); // Listen for sort changes
 
             productGrid.addEventListener('click', (e) => {
                 const card = e.target.closest('[data-id]');
@@ -849,7 +1280,7 @@
                 }
             });
 
-            renderProducts(products);
+            filterAndRender(); // Initial render for products
 
             const navButtons = document.querySelectorAll('nav button');
             const contentSections = document.querySelectorAll('main > .content-section'); // Select top-level sections
@@ -869,13 +1300,14 @@
                                 productGrid.classList.remove('hidden');
                                 nestedRankingSection.classList.add('hidden');
                                 nestedAnalysisSection.classList.add('hidden'); 
+                                filterAndRender(); // Re-render products with current filters
                             } else if (targetId === 'countries') {
                                 nestedAnalysisSection.classList.add('hidden'); // Hide analysis by default
                                 countryGrid.classList.remove('hidden'); // Ensure country grid is visible
-                                renderCountries(); // Re-render countries
+                                filterAndRenderCountries(); // Re-render countries with current filters
                             } else if (targetId === 'tourist-analysis') { // New tab logic
                                 renderGlobalTouristStats();
-                                renderTouristAnalysisCards(touristAnalysisData);
+                                filterAndRenderTouristAnalysisCards(); // Re-render tourist analysis cards with filters
                             } else if (targetId === 'stores') { // Store tab logic
                                 filterAndRenderStores(); // Re-render stores with current filters
                             }
@@ -1027,19 +1459,22 @@
             function filterAndRenderStores() {
                 const searchTerm = storeSearch.value.toLowerCase();
                 const storeType = storeTypeFilter.value;
+                const storeCountry = storeCountryFilter.value; // Get store country filter
 
                 const filtered = storesData.filter(store => {
                     const searchMatch = store.name.toLowerCase().includes(searchTerm) || 
                                         store.country.toLowerCase().includes(searchTerm) ||
                                         store.productsSold.some(p => p.toLowerCase().includes(searchTerm));
                     const typeMatch = (storeType === 'all' || store.type === storeType);
-                    return searchMatch && typeMatch;
+                    const countryMatch = (storeCountry === 'all' || store.country === storeCountry); // New country filter logic
+                    return searchMatch && typeMatch && countryMatch; // Combine all filters
                 });
                 renderStores(filtered);
             }
 
             storeSearch.addEventListener('input', filterAndRenderStores);
-            storeTypeFilter.addEventListener('change', filterAndRenderStores); // New event listener
+            storeTypeFilter.addEventListener('change', filterAndRenderStores);
+            storeCountryFilter.addEventListener('change', filterAndRenderStores); // New event listener for store country
             filterAndRenderStores(); // Initial render for stores
 
 
@@ -1130,14 +1565,27 @@
                 }
             });
             
+            // Country filter elements
+            const touristCountFilterMin = document.getElementById('tourist-count-filter-min');
+            const touristCountFilterMax = document.getElementById('tourist-count-filter-max');
+            const avgSpendingFilterMin = document.getElementById('avg-spending-filter-min');
+            const avgSpendingFilterMax = document.getElementById('avg-spending-filter-max');
+            const annualRevenueFilterMin = document.getElementById('annual-revenue-filter-min');
+            const annualRevenueFilterMax = document.getElementById('annual-revenue-filter-max');
+
             // New function to render countries (uses consolidatedCountriesInfo)
-            function renderCountries() {
+            function renderCountries(filteredCountries) {
                 countryGrid.innerHTML = '';
                 // Hide analysis section if it's currently visible when rendering countries
                 nestedAnalysisSection.classList.add('hidden');
                 countryGrid.classList.remove('hidden'); // Ensure country grid is visible
 
-                consolidatedCountriesInfo.forEach(country => {
+                if (filteredCountries.length === 0) {
+                    countryGrid.innerHTML = `<p class="text-gray-500 col-span-full text-center">هیچ کشوری با این فیلترها یافت نشد.</p>`;
+                    return;
+                }
+
+                filteredCountries.forEach(country => {
                     const countryCard = document.createElement('div');
                     countryCard.className = "bg-white rounded-lg shadow-lg p-6 cursor-pointer transform hover:-translate-y-1 transition-transform duration-300"; // Added cursor-pointer
                     countryCard.dataset.countryName = country.name; // Add data-country-name for click handling
@@ -1153,7 +1601,33 @@
                     countryGrid.appendChild(countryCard);
                 });
             }
-            renderCountries(); // Call this function on load
+
+            function filterAndRenderCountries() {
+                const minTourists = parseFloat(touristCountFilterMin.value);
+                const maxTourists = parseFloat(touristCountFilterMax.value);
+                const minAvgSpending = parseFloat(avgSpendingFilterMin.value);
+                const maxAvgSpending = parseFloat(avgSpendingFilterMax.value);
+                const minAnnualRevenue = parseFloat(annualRevenueFilterMin.value);
+                const maxAnnualRevenue = parseFloat(annualRevenueFilterMax.value);
+
+                const filtered = consolidatedCountriesInfo.filter(country => {
+                    const touristMatch = country.touristsNumeric >= minTourists && country.touristsNumeric <= maxTourists;
+                    const avgSpendingMatch = country.avgSpending >= minAvgSpending && country.avgSpending <= maxAvgSpending;
+                    const annualRevenueMatch = country.annualTourismRevenueNumeric >= minAnnualRevenue && country.annualTourismRevenueNumeric <= maxAnnualRevenue;
+                    return touristMatch && avgSpendingMatch && annualRevenueMatch;
+                });
+                renderCountries(filtered);
+            }
+
+            // Add event listeners for country filters
+            touristCountFilterMin.addEventListener('input', filterAndRenderCountries);
+            touristCountFilterMax.addEventListener('input', filterAndRenderCountries);
+            avgSpendingFilterMin.addEventListener('input', filterAndRenderCountries);
+            avgSpendingFilterMax.addEventListener('input', filterAndRenderCountries);
+            annualRevenueFilterMin.addEventListener('input', filterAndRenderCountries);
+            annualRevenueFilterMax.addEventListener('input', filterAndRenderCountries);
+
+            filterAndRenderCountries(); // Call this function on load for countries tab
 
             // Event listener for country grid clicks (to open country detail modal)
             countryGrid.addEventListener('click', (e) => {
@@ -1389,6 +1863,38 @@
             applyRankingFilters();
 
             // --- Tourist Analysis Tab Functions ---
+            const travelPurposeFilter = document.getElementById('travel-purpose-filter');
+            const ageGroupFilter = document.getElementById('age-group-filter');
+            const economicLevelFilter = document.getElementById('economic-level-filter');
+            const demographicFilter = document.getElementById('demographic-filter');
+
+            // Populate tourist analysis filters
+            let allTravelPurposes = ['all'];
+            let allAgeGroups = ['all'];
+            let allEconomicLevels = ['all'];
+            let allDemographics = ['all'];
+
+            touristAnalysisData.forEach(data => {
+                Object.keys(data.travelPurposes).forEach(purpose => {
+                    if (!allTravelPurposes.includes(purpose)) allTravelPurposes.push(purpose);
+                });
+                Object.keys(data.ageGroups).forEach(age => {
+                    if (!allAgeGroups.includes(age)) allAgeGroups.push(age);
+                });
+                Object.keys(data.economicLevels).forEach(level => {
+                    if (!allEconomicLevels.includes(level)) allEconomicLevels.push(level);
+                });
+                Object.keys(data.demographics).forEach(demo => {
+                    if (!allDemographics.includes(demo)) allDemographics.push(demo);
+                });
+            });
+
+            travelPurposeFilter.innerHTML = allTravelPurposes.map(p => `<option value="${p}">${p === 'all' ? 'همه' : p}</option>`).join('');
+            ageGroupFilter.innerHTML = allAgeGroups.map(a => `<option value="${a}">${a === 'all' ? 'همه' : a}</option>`).join('');
+            economicLevelFilter.innerHTML = allEconomicLevels.map(e => `<option value="${e}">${e === 'all' ? 'همه' : e}</option>`).join('');
+            demographicFilter.innerHTML = allDemographics.map(d => `<option value="${d}">${d === 'all' ? 'همه' : d}</option>`).join('');
+
+
             function renderGlobalTouristStats() {
                 document.getElementById('global-top-destinations').textContent = globalTouristStats.topDestinations;
                 document.getElementById('global-travel-purposes').textContent = Object.entries(globalTouristStats.travelPurposes).map(([key, value]) => `${key}: ${value}%`).join(', ');
@@ -1397,10 +1903,27 @@
                 document.getElementById('global-demographics').textContent = Object.entries(globalTouristStats.demographics).map(([key, value]) => `${key}: ${value}%`).join(', ');
             }
 
+            function filterAndRenderTouristAnalysisCards() {
+                const selectedPurpose = travelPurposeFilter.value;
+                const selectedAgeGroup = ageGroupFilter.value;
+                const selectedEconomicLevel = economicLevelFilter.value;
+                const selectedDemographic = demographicFilter.value;
+
+                let filteredData = touristAnalysisData.filter(countryData => {
+                    const purposeMatch = selectedPurpose === 'all' || (countryData.travelPurposes[selectedPurpose] && countryData.travelPurposes[selectedPurpose] > 0);
+                    const ageMatch = selectedAgeGroup === 'all' || (countryData.ageGroups[selectedAgeGroup] && countryData.ageGroups[selectedAgeGroup] > 0);
+                    const economicMatch = selectedEconomicLevel === 'all' || (countryData.economicLevels[selectedEconomicLevel] && countryData.economicLevels[selectedEconomicLevel] > 0);
+                    const demographicMatch = selectedDemographic === 'all' || (countryData.demographics[selectedDemographic] && countryData.demographics[selectedDemographic] > 0);
+                    
+                    return purposeMatch && ageMatch && economicMatch && demographicMatch;
+                });
+                renderTouristAnalysisCards(filteredData);
+            }
+
             function renderTouristAnalysisCards(data) {
                 touristAnalysisGrid.innerHTML = '';
                 if(data.length === 0){
-                    touristAnalysisGrid.innerHTML = `<p class="text-gray-500 col-span-full text-center">هیچ داده‌ای برای تحلیل گردشگران یافت نشد.</p>`;
+                    touristAnalysisGrid.innerHTML = `<p class="text-gray-500 col-span-full text-center">هیچ داده‌ای برای تحلیل گردشگران با این فیلترها یافت نشد.</p>`;
                     return;
                 }
                 data.forEach(countryData => {
@@ -1418,6 +1941,13 @@
                     touristAnalysisGrid.appendChild(card);
                 });
             }
+
+            // Add event listeners for tourist analysis filters
+            travelPurposeFilter.addEventListener('change', filterAndRenderTouristAnalysisCards);
+            ageGroupFilter.addEventListener('change', filterAndRenderTouristAnalysisCards);
+            economicLevelFilter.addEventListener('change', filterAndRenderTouristAnalysisCards);
+            demographicFilter.addEventListener('change', filterAndRenderTouristAnalysisCards);
+
 
             touristAnalysisGrid.addEventListener('click', (e) => {
                 const card = e.target.closest('[data-id]');
